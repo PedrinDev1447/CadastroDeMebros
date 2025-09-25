@@ -7,18 +7,16 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "tb_cadastro_de_membros")
 public class MembroModel {
-
-
     //nome, logradouro, idade, gênero e estado civil.
     //@Id + @GeneratedValue (sempre serao usadas lado a lado)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String nome;
-    String email;
-    String genero;
-    String logradouro;
-    int idade;
+    private Long id;
+    private String nome;
+    private String email;
+    private String genero;
+    private String logradouro;
+    private int idade;
 
 
     //No argsContructor
@@ -31,6 +29,14 @@ public class MembroModel {
         this.genero = genero;
         this.logradouro = logradouro;
         this.idade = idade;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
