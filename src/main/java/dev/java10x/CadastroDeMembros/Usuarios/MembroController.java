@@ -1,4 +1,4 @@
-package dev.java10x.CadastroDeMembros;
+package dev.java10x.CadastroDeMembros.Usuarios;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MembroController {
 
     @GetMapping("/boasvindas")
-    public String boasVindas(){
+    public String boasVindasUsaurios(){
        return "Essa é minha primeira mensagem nessa rota";
     }
 

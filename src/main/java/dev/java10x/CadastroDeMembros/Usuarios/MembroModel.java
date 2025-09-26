@@ -1,4 +1,4 @@
-package dev.java10x.CadastroDeMembros;
+package dev.java10x.CadastroDeMembros.Usuarios;
 
 import jakarta.persistence.*;
 
