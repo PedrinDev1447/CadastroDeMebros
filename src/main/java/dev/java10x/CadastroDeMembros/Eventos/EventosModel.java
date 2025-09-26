@@ -1,9 +1,12 @@
 package dev.java10x.CadastroDeMembros.Eventos;
 
 
+import dev.java10x.CadastroDeMembros.Usuarios.MembroModel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+
+import java.util.List;
 
 //o JPA está baixado
 @Entity
@@ -22,6 +25,10 @@ public class EventosModel {
     @Pattern(regexp = "^(\\+55\\s?)?\\(?\\d{2}\\)?\\s?9?\\d{4}-?\\d{4}$",
     message = "Telefone em formato inválido. Ex: +55 (11) 91234-5678")
     private int contato ;
+
+
+    @OneToMany(mappedBy = "evento")
+    private List<MembroModel> membroModels;
 
     //Construtor vazio or No Args constructor
     public EventosModel() {

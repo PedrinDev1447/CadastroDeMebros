@@ -1,8 +1,10 @@
 package dev.java10x.CadastroDeMembros.Ministerio;
 
+import dev.java10x.CadastroDeMembros.Usuarios.MembroModel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_cadastro_de_ministerio")
@@ -26,6 +28,8 @@ public class MinisterioModel {
     private LocalDateTime dataCriacao = LocalDateTime.now();
 
 
+    @OneToMany (mappedBy = "ministerio")
+    private List<MembroModel> membroModels;
     public MinisterioModel() {
     }
 
