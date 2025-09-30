@@ -3,10 +3,17 @@ package dev.java10x.CadastroDeMembros.Ministerio;
 import dev.java10x.CadastroDeMembros.Usuarios.MembroModel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Table(name = "tb_cadastro_de_ministerio")
 public class MinisterioModel {
 
@@ -28,73 +35,8 @@ public class MinisterioModel {
     private LocalDateTime dataCriacao = LocalDateTime.now();
 
 
-    @OneToMany (mappedBy = "ministerio")
+    @OneToMany(mappedBy = "ministerioModel")
     private List<MembroModel> membroModels;
-    public MinisterioModel() {
-    }
 
-    public MinisterioModel(String nome, String descricao, String responsavel, String email, String telefone, LocalDateTime dataCriacao) {
-        this.nome = nome;
-        this.descricao = descricao;
-        this.responsavel = responsavel;
-        this.email = email;
-        this.telefone = telefone;
-        this.dataCriacao = dataCriacao;
-    }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getResponsavel() {
-        return responsavel;
-    }
-
-    public void setResponsavel(String responsavel) {
-        this.responsavel = responsavel;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public LocalDateTime getDataCriacao() {
-        return dataCriacao;
-    }
-
-    public void setDataCriacao(LocalDateTime dataCriacao) {
-        this.dataCriacao = dataCriacao;
-    }
 }
