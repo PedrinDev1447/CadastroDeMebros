@@ -1,6 +1,5 @@
 package dev.java10x.CadastroDeMembros.Usuarios;
 
-import dev.java10x.CadastroDeMembros.Eventos.EventosController;
 import dev.java10x.CadastroDeMembros.Eventos.EventosModel;
 import dev.java10x.CadastroDeMembros.Ministerio.MinisterioModel;
 import jakarta.persistence.*;
@@ -11,14 +10,14 @@ import lombok.NoArgsConstructor;
 
 import java.text.DateFormat;
 
-//Entuty transforma uma class em uma entidade do banco de dados
+//Entuty transforma uma class numa entidade do banco de dados
 //JPA = Java Persistence API
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Table(name = "tb_cadastro_de_membros")
-public class MembroModel {
+@Table(name = "tb_cadastro_de_usuario")
+public class UsuarioModel {
     //nome, logradouro, idade, gênero e estado civil.
     //@Id + @GeneratedValue (sempre serao usadas lado a lado)
     @Id

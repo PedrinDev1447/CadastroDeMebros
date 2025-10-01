@@ -1,6 +1,6 @@
 package dev.java10x.CadastroDeMembros.Ministerio;
 
-import dev.java10x.CadastroDeMembros.Usuarios.MembroModel;
+import dev.java10x.CadastroDeMembros.Usuarios.UsuarioModel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -36,7 +36,7 @@ public class MinisterioModel {
 
 
     @OneToMany(mappedBy = "ministerioModel")
-    private List<MembroModel> membroModels;
+    private List<UsuarioModel> membroModels;
 
 
 }

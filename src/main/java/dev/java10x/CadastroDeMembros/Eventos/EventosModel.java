@@ -1,7 +1,7 @@
 package dev.java10x.CadastroDeMembros.Eventos;
 
 
-import dev.java10x.CadastroDeMembros.Usuarios.MembroModel;
+import dev.java10x.CadastroDeMembros.Usuarios.UsuarioModel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -33,7 +33,7 @@ public class EventosModel {
 
 
     @OneToMany(mappedBy = "eventosModel")
-    private List<MembroModel> membroModels;
+    private List<UsuarioModel> membroModels;
 
 
 
