@@ -1,4 +1,4 @@
-package dev.java10x.CadastroDeMembros.Usuarios;
+package dev.java10x.CadastroDeMembros.Membro;
 
 import dev.java10x.CadastroDeMembros.Eventos.EventosModel;
 import dev.java10x.CadastroDeMembros.Ministerio.MinisterioModel;
@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.text.DateFormat;
+import java.time.LocalDate;
 
 //Entuty transforma uma class numa entidade do banco de dados
 //JPA = Java Persistence API
@@ -17,33 +18,49 @@ import java.text.DateFormat;
 @AllArgsConstructor
 @Data
 @Table(name = "tb_cadastro_de_usuario")
-public class UsuarioModel {
+public class MembroModel {
     //nome, logradouro, idade, gênero e estado civil.
     //@Id + @GeneratedValue (sempre serao usadas lado a lado)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_membro")
     private Long id;
+
     @NotBlank(message = "O nome é obrigatótio")
     @Size(min = 3, max = 100, message = "O nome deve ter entre 3 e 100 caracteres")
+    @Column(name = "nome_membro")
     private String nome;
+
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
+
     @NotBlank(message = "O gênero é obrigatório")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "genero")
     private String genero;
-    @NotBlank(message = "O logradouro é obrigatório")
-    private String logradouro;
+
+    @NotBlank(message = "O endereço é obrigatório")
+    @Column(name = "endereco")
+    private String endereco;
+
     @Past(message = "Data de nascimento deve ser colocada no passado")
-    private DateFormat dataDeNascimento;
+    @Column(name = "data" )
+    private LocalDate dataDeNascimento;
+
     @Min(value = 0, message =  "Idade não pode ser negativa")
     @Max(value = 120, message = "Idade nao pode ser maior que 120 anos")
+    @Column(name = "idade" )
     private int idade;
 
 
     @ManyToOne
     @JoinColumn(name = "ministerios_id") //Foreing key ou chave estrangeira
-    private MinisterioModel ministerioModel;
-    @ManyToOne
-    @JoinColumn(name = "eventos_id") //Foreing key ou chave estrangeira
-    private EventosModel eventosModel;
+    private MinisterioModel ministerio;
+    @ManyToMany
+    @JoinTable(name = "tb_membro_evento",
+            joinColumns = @JoinColumn(name = "id_membro"),
+            inverseJoinColumns = @JoinColumn(name = "id_evento")) //Foreing key ou chave estrangeira
+    private EventosModel evento;
 
 
 }

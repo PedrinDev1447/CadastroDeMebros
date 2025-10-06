@@ -1,4 +1,4 @@
-package dev.java10x.CadastroDeMembros.Usuarios;
+package dev.java10x.CadastroDeMembros.Membro;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/usuarios")
-public class UsuarioController {
+public class MembroController {
 
     @GetMapping("/")
     public String boasVindasUsuariosRaiz() {
