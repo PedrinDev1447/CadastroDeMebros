@@ -1,5 +1,6 @@
 package dev.java10x.CadastroDeMembros.Doacoes;
 
+import dev.java10x.CadastroDeMembros.Membro.MembroModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +16,7 @@ public interface DoacoesRepository extends JpaRepository<DoacoesModel, Long> {
      * @param membro O nome do membro.
      * @return Uma lista de doações feitas pelo membro.
      */
-    List<DoacoesModel> findByMembro(String membro);
+    List<DoacoesModel> findByMembro(MembroModel membro);
 
     /**
      * Busca todas as doações realizadas em uma data específica.

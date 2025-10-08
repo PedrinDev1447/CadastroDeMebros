@@ -1,6 +1,6 @@
 package dev.java10x.CadastroDeMembros.Membro;
 
-public enum Genero {
+public enum GeneroEnum {
     MASCULINO,
     FEMININO
 }

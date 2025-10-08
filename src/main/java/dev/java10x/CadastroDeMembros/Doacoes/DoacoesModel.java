@@ -1,5 +1,6 @@
 package dev.java10x.CadastroDeMembros.Doacoes;
 
+import dev.java10x.CadastroDeMembros.Membro.MembroModel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -26,7 +27,7 @@ public class DoacoesModel {
      * Isso torna os dados na tabela muito mais legíveis do que usar números (EnumType.ORDINAL).
      */
     @NotNull(message = "O tipo da doação é obrigatório")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @Column(name = "tipo_doacao", nullable = false)
     private TipoDoacao tipo;
 
@@ -40,4 +41,9 @@ public class DoacoesModel {
 
     @Column(name = "doacao_anonima", nullable = false)
     private boolean anonimo = false;
+
+    @ManyToOne
+    @JoinColumn(name = "membro_id", nullable = true)
+    private MembroModel membro;
+
 }

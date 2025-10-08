@@ -37,8 +37,8 @@ public class MinisterioModel {
     @Column(name = "email")
     private String email;
 
-            @OneToMany(mappedBy = "ministerioModel")
-    private List<MembroModel> ministerio;
+            @OneToMany(mappedBy = "ministerio")
+    private List<MembroModel> membros;
 
 
 }

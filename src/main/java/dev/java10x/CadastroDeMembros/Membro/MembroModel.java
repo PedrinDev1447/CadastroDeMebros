@@ -8,10 +8,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.text.DateFormat;
 import java.time.LocalDate;
+import java.util.List;
 
-//Entuty transforma uma class numa entidade do banco de dados
+//Entity transforma uma class numa entidade do banco de dados
 //JPA = Java Persistence API
 @Entity
 @NoArgsConstructor
@@ -26,7 +26,7 @@ public class MembroModel {
     @Column(name = "id_membro")
     private Long id;
 
-    @NotBlank(message = "O nome é obrigatótio")
+    @NotBlank(message = "O nome é obrigatório")
     @Size(min = 3, max = 100, message = "O nome deve ter entre 3 e 100 caracteres")
     @Column(name = "nome_membro")
     private String nome;
@@ -37,7 +37,7 @@ public class MembroModel {
     @NotBlank(message = "O gênero é obrigatório")
     @Enumerated(EnumType.STRING)
     @Column(name = "genero")
-    private String genero;
+    private GeneroEnum genero;
 
     @NotBlank(message = "O endereço é obrigatório")
     @Column(name = "endereco")
@@ -60,7 +60,7 @@ public class MembroModel {
     @JoinTable(name = "tb_membro_evento",
             joinColumns = @JoinColumn(name = "id_membro"),
             inverseJoinColumns = @JoinColumn(name = "id_evento")) //Foreing key ou chave estrangeira
-    private EventosModel evento;
+    private List<EventosModel> evento;
 
 
 }
