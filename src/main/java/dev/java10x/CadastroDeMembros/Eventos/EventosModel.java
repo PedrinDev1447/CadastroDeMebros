@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 //o JPA está baixado
 @Entity
-@Table (name = "Evento")
+@Table (name = "tb_Evento")
 public class EventosModel {
 
 
