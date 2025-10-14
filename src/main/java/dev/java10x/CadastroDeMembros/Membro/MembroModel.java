@@ -17,18 +17,18 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Table(name = "tb_cadastro_de_usuario")
+@Table(name = "tb_membro")
 public class MembroModel {
     //nome, logradouro, idade, gênero e estado civil.
     //@Id + @GeneratedValue (sempre serao usadas lado a lado)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_membro")
+    @Column(name = "id")
     private Long id;
 
     @NotBlank(message = "O nome é obrigatório")
     @Size(min = 3, max = 100, message = "O nome deve ter entre 3 e 100 caracteres")
-    @Column(name = "nome_membro")
+    @Column(name = "nome")
     private String nome;
 
     @Column(name = "email", nullable = false, unique = true)
@@ -44,7 +44,7 @@ public class MembroModel {
     private String endereco;
 
     @Past(message = "Data de nascimento deve ser colocada no passado")
-    @Column(name = "data" )
+    @Column(name = "data_nascimento" )
     private LocalDate dataDeNascimento;
 
     @Min(value = 0, message =  "Idade não pode ser negativa")
@@ -52,7 +52,9 @@ public class MembroModel {
     @Column(name = "idade" )
     private int idade;
 
-
+    @Past(message = "Data de casamento deve ser colocada no passado")
+    @Column(name = "data_casamento" )
+    private LocalDate dataCasamento;
     @ManyToOne
     @JoinColumn(name = "ministerios_id") //Foreing key ou chave estrangeira
     private MinisterioModel ministerio;
