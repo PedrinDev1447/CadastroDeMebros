@@ -19,4 +19,7 @@ public class MembroService {
     public List<MembroModel> buscarPorParteDoNome(String nome) {
         return usuarioRepository.findByNomeContainingIgnoreCase(nome);
     }
+    public static void main(String[] args) {
+        System.out.println("Versionando o Bd_membro flyway");
+    }
 }
