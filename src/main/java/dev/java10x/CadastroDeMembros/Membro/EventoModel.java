@@ -1,4 +1,4 @@
-package dev.java10x.CadastroDeMembros.Evento; // 1. Pacote renomeado para singular
+package dev.java10x.CadastroDeMembros.Membro; // 1. Pacote renomeado para singular
 
 import dev.java10x.CadastroDeMembros.Membro.MembroModel;
 import jakarta.persistence.*;

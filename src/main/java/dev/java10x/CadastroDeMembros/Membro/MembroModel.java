@@ -1,6 +1,5 @@
 package dev.java10x.CadastroDeMembros.Membro;
 
-import dev.java10x.CadastroDeMembros.Eventos.EventosModel;
 import dev.java10x.CadastroDeMembros.Ministerio.MinisterioModel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -62,7 +61,7 @@ public class MembroModel {
     @JoinTable(name = "tb_membro_evento",
             joinColumns = @JoinColumn(name = "id_membro"),
             inverseJoinColumns = @JoinColumn(name = "id_evento")) //Foreing key ou chave estrangeira
-    private List<EventosModel> evento;
+    private List<dev.java10x.CadastroDeMembros.Membro.EventoModel> evento;
 
 
 }

@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface EventosRepository extends JpaRepository<EventosModel, Long> {
+// CORRIJA AQUI
+public interface EventosRepository extends JpaRepository<dev.java10x.CadastroDeMembros.Membro.EventoModel, Long> {
 
     /**
      * Busca um evento pelo nome exato.
@@ -15,6 +16,9 @@ public interface EventosRepository extends JpaRepository<EventosModel, Long> {
      * @param nome O nome do evento.
      * @return Um Optional contendo o evento, se encontrado.
      */
-    Optional<EventosModel> findByNome(String nome);
-    List<EventosModel> findByResponsavelContainingIgnoreCase(String responsavel);
+    // CORRIJA AQUI
+    Optional<dev.java10x.CadastroDeMembros.Membro.EventoModel> findByNome(String nome);
+
+    // CORRIJA AQUI
+    List<dev.java10x.CadastroDeMembros.Membro.EventoModel> findByResponsavelContainingIgnoreCase(String responsavel);
 }
