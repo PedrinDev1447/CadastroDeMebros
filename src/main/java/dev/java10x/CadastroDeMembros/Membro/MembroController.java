@@ -1,50 +1,49 @@
 package dev.java10x.CadastroDeMembros.Membro;
 
-// Imports específicos são uma boa prática
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/membros") // Rota base mais intuitiva
+@RequestMapping("/api/v1/membros") // URL Base Padronizada
+@Tag(name = "Membros", description = "Gestão de cadastro de membros da igreja")
 public class MembroController {
 
-    // Adicionar membro (CREATE)
+    // POST
+    @Operation(summary = "Cadastrar novo membro", description = "Adiciona um novo membro ao banco de dados da igreja")
     @PostMapping
-    public String criarMembro() {
-        // TODO: Lógica para salvar um novo membro no banco de dados
-        return "Membro criado com sucesso!";
+    public ResponseEntity<String> criarMembro() {
+        // Retorna 201 (Created) para confirmar a criação
+        return ResponseEntity.status(201).body("Membro criado com sucesso!");
     }
 
-    // Mostrar todos os membros (READ)
+    // GET
+    @Operation(summary = "Listar todos os membros", description = "Retorna a lista completa de membros ativos")
     @GetMapping
-    public String buscarTodosMembros() {
-        // TODO: Lógica para listar todos os membros do banco
-        return "Mostrando todos os membros.";
+    public ResponseEntity<String> buscarTodosMembros() {
+        return ResponseEntity.ok("Mostrando todos os membros.");
     }
 
-    // Procurar membro por ID (READ)
+    // GET COM ID
+    @Operation(summary = "Buscar membro por ID", description = "Retorna os dados de um membro específico")
     @GetMapping("/{id}")
-    public String buscarMembroPorId(@PathVariable Long id) {
-        // TODO: Lógica para buscar o membro específico pelo 'id'
-        return "Mostrando membro com ID: " + id;
+    public ResponseEntity<String> buscarMembroPorId(@PathVariable Long id) {
+        return ResponseEntity.ok("Mostrando membro com ID: " + id);
     }
 
-    // Alterar dados do membro (UPDATE)
+
+    // PUT
+    @Operation(summary = "Atualizar dados do membro", description = "Atualiza as informações de cadastro de um membro")
     @PutMapping("/{id}")
-    public String atualizarMembroPorId(@PathVariable Long id) {
-        // TODO: Lógica para atualizar os dados do membro com o 'id'
-        return "Membro com ID: " + id + " foi atualizado.";
+    public ResponseEntity<String> atualizarMembroPorId(@PathVariable Long id) {
+        return ResponseEntity.ok("Membro com ID: " + id + " foi atualizado.");
     }
 
-    // Deletar membro (DELETE)
+    // DELETE
+    @Operation(summary = "Excluir membro", description = "Remove um membro do cadastro")
     @DeleteMapping("/{id}")
-    public String deletarMembroPorId(@PathVariable Long id) {
-        // TODO: Lógica para deletar o membro com o 'id'
-        return "Membro com ID: " + id + " foi deletado.";
+    public ResponseEntity<String> deletarMembroPorId(@PathVariable Long id) {
+        return ResponseEntity.ok("Membro com ID: " + id + " foi deletado.");
     }
 }

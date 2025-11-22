@@ -1,49 +1,54 @@
 package dev.java10x.CadastroDeMembros.Doacoes;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/doacoes") // URL Base para este controller
+@RequestMapping("/api/v1/doacoes") // Boa prática: Versionamento da API
+@Tag(name = "Doações", description = "Gerenciamento de dízimos e ofertas da igreja")
 public class DoacoesController {
 
-    // Registrar Doação (CREATE)
+    // POST
+    @Operation(summary = "Registrar uma nova doação", description = "Cria um registro de dízimo ou oferta no banco de dados")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Doação registrada com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Dados inválidos fornecidos")
+    })
     @PostMapping
-    public String registrarDoacao() {
-        // TODO: Adicionar lógica para salvar uma nova doação
-        return "Doação registrada com sucesso!";
+    public ResponseEntity<String> criarDoacao() {
+        // TODO: Receber um DTO (Objeto de Transferência de Dados) como parâmetro (@RequestBody)
+        return ResponseEntity.status(201).body("Doação criada com sucesso!");
     }
 
-    // Buscar todas as Doações (READ)
+    // GET (Todos)
+    @Operation(summary = "Listar todas as doações", description = "Retorna uma lista com todo o histórico de doações")
     @GetMapping
-    public String buscarTodasDoacoes() {
-        // TODO: Adicionar lógica para listar todas as doações
-        return "Mostrando todas as doações.";
+    public ResponseEntity<String> buscarTodasDoacoes() {
+        return ResponseEntity.ok("Mostrando todas as doações.");
     }
 
-    // Buscar Doação por ID (READ)
-    @GetMapping("/{id}")
-    public String buscarDoacaoPorId(@PathVariable Long id) {
-        // TODO: Adicionar lógica para buscar a doação com o 'id'
-        return "Mostrando doação com ID: " + id;
+    // GET (Por ID)
+    @Operation(summary = "Buscar doação por ID", description = "Retorna os detalhes de uma doação específica")
+    @GetMapping("/{id}") // O {id} na URL se conecta com o @PathVariable
+    public ResponseEntity<String> buscarDoacaoPorId(@PathVariable Long id) {
+        return ResponseEntity.ok("Mostrando doação com ID: " + id);
     }
 
-    // Atualizar Doação por ID (UPDATE)
+    // PUT
+    @Operation(summary = "Atualizar doação", description = "Atualiza os dados de uma doação existente pelo ID")
     @PutMapping("/{id}")
-    public String atualizarDoacaoPorId(@PathVariable Long id) {
-        // TODO: Adicionar lógica para atualizar a doação com o 'id'
-        return "Doação com ID: " + id + " foi atualizada.";
+    public ResponseEntity<String> atualizarDoacaoPorId(@PathVariable Long id) {
+        return ResponseEntity.ok("Doação com ID: " + id + " foi atualizada.");
     }
 
-    // Deletar Doação por ID (DELETE)
+    // DELETE
+    @Operation(summary = "Excluir doação", description = "Remove uma doação do registro permanentemente")
     @DeleteMapping("/{id}")
-    public String deletarDoacaoPorId(@PathVariable Long id) {
-        // TODO: Adicionar lógica para deletar a doação com o 'id'
-        return "Doação com ID: " + id + " foi deletada.";
+    public ResponseEntity<String> deletarDoacaoPorId(@PathVariable Long id) {
+        return ResponseEntity.ok("Doação com ID: " + id + " foi deletada.");
     }
 }

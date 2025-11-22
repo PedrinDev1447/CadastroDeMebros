@@ -1,49 +1,47 @@
 package dev.java10x.CadastroDeMembros.Ministerio;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/ministerios") // URL Base para este controller
+@RequestMapping("/api/v1/ministerios") // URL Base: http://localhost:8080/api/v1/ministerios
+@Tag(name = "Ministérios", description = "Gestão de departamentos e grupos de serviço da igreja")
 public class MinisterioController {
 
-    // Criar Ministério (CREATE)
+    // POST
+    @Operation(summary = "Cadastrar novo ministério", description = "Cria um novo departamento ou grupo de atuação na igreja")
     @PostMapping
-    public String criarMinisterio() {
-        // TODO: Adicionar lógica para salvar um novo ministério no banco
-        return "Ministério criado com sucesso!";
+    public ResponseEntity<String> criarMinisterio() {
+        return ResponseEntity.status(201).body("Ministério criado com sucesso!");
     }
 
-    // Buscar todos os Ministérios (READ)
+    // GET
+    @Operation(summary = "Listar todos os ministérios", description = "Retorna a lista completa de ministérios ativos")
     @GetMapping
-    public String buscarTodosMinisterios() {
-        // TODO: Adicionar lógica para listar todos os ministérios
-        return "Mostrando todos os ministérios.";
+    public ResponseEntity<String> buscarTodosMinisterios() {
+        return ResponseEntity.ok("Mostrando todos os ministérios.");
     }
 
-    // Buscar Ministério por ID (READ)
+    // GET COM ID
+    @Operation(summary = "Buscar ministério por ID", description = "Retorna os detalhes de um ministério específico")
     @GetMapping("/{id}")
-    public String buscarMinisterioPorId(@PathVariable Long id) {
-        // TODO: Adicionar lógica para buscar o ministério com o 'id'
-        return "Mostrando ministério com ID: " + id;
+    public ResponseEntity<String> buscarMinisterioPorId(@PathVariable Long id) {
+        return ResponseEntity.ok("Mostrando ministério com ID: " + id);
     }
 
-    // Atualizar Ministério por ID (UPDATE)
+    // PUT
+    @Operation(summary = "Atualizar ministério", description = "Atualiza as informações de um ministério existente")
     @PutMapping("/{id}")
-    public String atualizarMinisterioPorId(@PathVariable Long id) {
-        // TODO: Adicionar lógica para atualizar o ministério com o 'id'
-        return "Ministério com ID: " + id + " foi atualizado.";
+    public ResponseEntity<String> atualizarMinisterioPorId(@PathVariable Long id) {
+        return ResponseEntity.ok("Ministério com ID: " + id + " foi atualizado.");
     }
 
-    // Deletar Ministério por ID (DELETE)
+    // DELETE
+    @Operation(summary = "Excluir ministério", description = "Remove um ministério do cadastro")
     @DeleteMapping("/{id}")
-    public String deletarMinisterioPorId(@PathVariable Long id) {
-        // TODO: Adicionar lógica para deletar o ministério com o 'id'
-        return "Ministério com ID: " + id + " foi deletado.";
+    public ResponseEntity<String> deletarMinisterioPorId(@PathVariable Long id) {
+        return ResponseEntity.ok("Ministério com ID: " + id + " foi deletado.");
     }
 }

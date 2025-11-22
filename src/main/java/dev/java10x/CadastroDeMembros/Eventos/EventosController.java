@@ -1,49 +1,47 @@
 package dev.java10x.CadastroDeMembros.Eventos;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/eventos") // URL Base para este controller
+@RequestMapping("/api/v1/eventos")
+@Tag(name = "Eventos", description = "Gestão de eventos da igreja")
 public class EventosController {
 
-    // Criar Evento (CREATE)
+    // POST
+    @Operation(summary = "Criar novo evento")
     @PostMapping
-    public String criarEvento() {
-        // TODO: Adicionar lógica para salvar um novo evento
-        return "Evento criado com sucesso!";
+    public ResponseEntity<String> criarEvento() {
+        return ResponseEntity.status(201).body("Evento criado com sucesso!");
     }
 
-    // Buscar todos os Eventos (READ)
+    // GET
+    @Operation(summary = "Listar todos os eventos")
     @GetMapping
-    public String buscarTodosEventos() {
-        // TODO: Adicionar lógica para listar todos os eventos
-        return "Mostrando todos os eventos.";
+    public ResponseEntity<String> buscarTodosEventos() {
+        return ResponseEntity.ok("Mostrando todos os eventos.");
     }
 
-    // Buscar Evento por ID (READ)
+    // GET COM ID
+    @Operation(summary = "Buscar evento por ID")
     @GetMapping("/{id}")
-    public String buscarEventoPorId(@PathVariable Long id) {
-        // TODO: Adicionar lógica para buscar o evento com o 'id'
-        return "Mostrando evento com ID: " + id;
+    public ResponseEntity<String> buscarEventoPorId(@PathVariable Long id) {
+        return ResponseEntity.ok("Mostrando evento com ID: " + id);
     }
 
-    // Atualizar Evento por ID (UPDATE)
+    // PUT
+    @Operation(summary = "Atualizar evento")
     @PutMapping("/{id}")
-    public String atualizarEventoPorId(@PathVariable Long id) {
-        // TODO: Adicionar lógica para atualizar o evento com o 'id'
-        return "Evento com ID: " + id + " foi atualizado.";
+    public ResponseEntity<String> atualizarEventoPorId(@PathVariable Long id) {
+        return ResponseEntity.ok("Evento com ID: " + id + " foi atualizado.");
     }
 
-    // Deletar Evento por ID (DELETE)
+    // DELETE
+    @Operation(summary = "Deletar evento")
     @DeleteMapping("/{id}")
-    public String deletarEventoPorId(@PathVariable Long id) {
-        // TODO: Adicionar lógica para deletar o evento com o 'id'
-        return "Evento com ID: " + id + " foi deletado.";
+    public ResponseEntity<String> deletarEventoPorId(@PathVariable Long id) {
+        return ResponseEntity.ok("Evento com ID: " + id + " foi deletado.");
     }
 }
